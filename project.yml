@@ -1,0 +1,88 @@
+name: SafeThink
+options:
+  bundleIdPrefix: com.mfaizanshaikh
+  deploymentTarget:
+    iOS: "17.0"
+  xcodeVersion: "16.0"
+  generateEmptyDirectories: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    TARGETED_DEVICE_FAMILY: "1"
+
+packages:
+  llama-swift:
+    url: https://github.com/mattt/llama.swift
+    from: "2.8235.0"
+  GRDB:
+    url: https://github.com/groue/GRDB.swift
+    from: "7.4.1"
+  MarkdownUI:
+    url: https://github.com/gonzalezreal/swift-markdown-ui
+    from: "2.4.1"
+  Splash:
+    url: https://github.com/JohnSundell/Splash
+    from: "0.16.0"
+  swift-embeddings:
+    url: https://github.com/jkrukowski/swift-embeddings
+    from: "0.0.8"
+
+targets:
+  SafeThink:
+    type: application
+    platform: iOS
+    sources:
+      - path: SafeThink
+        excludes:
+          - "Package.swift"
+          - ".build"
+          - ".swiftpm"
+    settings:
+      base:
+        TARGETED_DEVICE_FAMILY: "1"
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.mfaizanshaikh.safethink
+        MARKETING_VERSION: "1.0.0"
+        CURRENT_PROJECT_VERSION: "1"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        DEVELOPMENT_TEAM: "KJS5669LU6"
+        INFOPLIST_KEY_UILaunchScreen_Generation: true
+        INFOPLIST_KEY_CFBundleDisplayName: SafeThink
+        INFOPLIST_KEY_LSApplicationCategoryType: "public.app-category.productivity"
+        INFOPLIST_KEY_NSCameraUsageDescription: "SafeThink needs camera access to capture images for AI analysis. All processing happens on-device."
+        INFOPLIST_KEY_NSMicrophoneUsageDescription: "SafeThink needs microphone access for voice input. All speech recognition happens on-device."
+        INFOPLIST_KEY_NSSpeechRecognitionUsageDescription: "SafeThink uses on-device speech recognition for voice input. No audio is sent to any server."
+        INFOPLIST_KEY_NSPhotoLibraryUsageDescription: "SafeThink needs photo access to analyze and edit images. All processing happens on-device."
+        INFOPLIST_KEY_NSFaceIDUsageDescription: "SafeThink uses Face ID to protect your private conversations."
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: "UIInterfaceOrientationPortrait"
+        INFOPLIST_KEY_UIRequiresFullScreen: YES
+    dependencies:
+      - package: llama-swift
+        product: LlamaSwift
+      - package: GRDB
+        product: GRDB
+      - package: MarkdownUI
+        product: MarkdownUI
+      - package: Splash
+        product: Splash
+      - package: swift-embeddings
+        product: Embeddings
+    entitlements:
+      path: SafeThink/Resources/SafeThink.entitlements
+      properties:
+        keychain-access-groups:
+          - $(AppIdentifierPrefix)com.mfaizanshaikh.safethink
+
+  SafeThinkTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - SafeThinkTests
+    dependencies:
+      - target: SafeThink
+    settings:
+      base:
+        TARGETED_DEVICE_FAMILY: "1"
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.mfaizanshaikh.safethink.tests

@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeThink - Privacy Policy</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+            background: #0a0a0a;
+            color: #e5e5e5;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px 50px;
+            background: linear-gradient(180deg, #1a1a2e 0%, #0a0a0a 100%);
+            border-bottom: 1px solid #1f1f1f;
+        }
+
+        .hero-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+        }
+
+        .hero-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero .subtitle {
+            font-size: 18px;
+            color: #a0a0a0;
+            margin-bottom: 20px;
+        }
+
+        .hero .updated {
+            font-size: 13px;
+            color: #666;
+            background: #1a1a1a;
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid #2a2a2a;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        .summary-card {
+            background: linear-gradient(135deg, #0f2027, #1a1a2e);
+            border: 1px solid #1f3a4f;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .summary-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #3b82f6);
+        }
+
+        .summary-card h2 {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .summary-item .icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 18px;
+        }
+
+        .icon-green { background: rgba(34, 197, 94, 0.15); }
+        .icon-blue { background: rgba(59, 130, 246, 0.15); }
+        .icon-purple { background: rgba(139, 92, 246, 0.15); }
+        .icon-amber { background: rgba(245, 158, 11, 0.15); }
+
+        .summary-item .text {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .summary-item .text strong {
+            display: block;
+            color: #fff;
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .section-number {
+            width: 32px;
+            height: 32px;
+            background: #1a1a2e;
+            border: 1px solid #2a2a3e;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: #8b5cf6;
+            flex-shrink: 0;
+        }
+
+        section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+            flex: 1;
+        }
+
+        .section-toggle {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            transition: transform 0.3s ease;
+            font-size: 12px;
+        }
+
+        .section-toggle.open {
+            transform: rotate(180deg);
+        }
+
+        .section-content {
+            padding-left: 44px;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            max-height: 0;
+            opacity: 0;
+        }
+
+        .section-content.open {
+            max-height: 1000px;
+            opacity: 1;
+        }
+
+        .section-content p {
+            color: #b0b0b0;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        .section-content ul {
+            list-style: none;
+            margin-bottom: 12px;
+        }
+
+        .section-content ul li {
+            color: #b0b0b0;
+            font-size: 15px;
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .section-content ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 14px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #3b82f6;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px 16px;
+            font-size: 14px;
+            border-bottom: 1px solid #1f1f1f;
+        }
+
+        th {
+            background: #1a1a1a;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        td {
+            color: #b0b0b0;
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: 12px;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        .badge-green {
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+        }
+
+        .badge-blue {
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #1f1f1f;
+            color: #555;
+            font-size: 13px;
+        }
+
+        .footer a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            background: #3b82f6;
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+            z-index: 100;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 600px) {
+            .hero { padding: 60px 20px 40px; }
+            .hero h1 { font-size: 28px; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .summary-card { padding: 24px; }
+            .container { padding: 32px 20px 60px; }
+            .section-content { padding-left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <div class="hero-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+    </div>
+    <h1>SafeThink</h1>
+    <p class="subtitle">Privacy Policy</p>
+    <span class="updated">Last updated: March 2026</span>
+</div>
+
+<div class="container">
+
+    <div class="summary-card">
+        <h2>Privacy at a Glance</h2>
+        <div class="summary-grid">
+            <div class="summary-item">
+                <div class="icon icon-green">&#x2714;</div>
+                <div class="text">
+                    <strong>Zero Data Collection</strong>
+                    No analytics, tracking, or telemetry
+                </div>
+            </div>
+            <div class="summary-item">
+                <div class="icon icon-blue">&#x1F4F1;</div>
+                <div class="text">
+                    <strong>100% On-Device AI</strong>
+                    All processing stays on your iPhone
+                </div>
+            </div>
+            <div class="summary-item">
+                <div class="icon icon-purple">&#x1F512;</div>
+                <div class="text">
+                    <strong>No Account Required</strong>
+                    No sign-up, no login, no passwords
+                </div>
+            </div>
+            <div class="summary-item">
+                <div class="icon icon-amber">&#x1F310;</div>
+                <div class="text">
+                    <strong>Transparent Networking</strong>
+                    Every request logged in-app
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section>
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-number">1</div>
+            <h3>Data Collection</h3>
+            <div class="section-toggle open">&#x25BC;</div>
+        </div>
+        <div class="section-content open">
+            <p><strong>SafeThink does not collect, store, or transmit any personal data to external servers.</strong> All data — including conversations, documents, images, memories, and settings — remains exclusively on your device.</p>
+            <p>We do not use any analytics frameworks, crash reporting SDKs, advertising identifiers, or tracking pixels. The app contains zero third-party data collection code.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-number">2</div>
+            <h3>On-Device Processing</h3>
+            <div class="section-toggle">&#x25BC;</div>
+        </div>
+        <div class="section-content">
+            <p>All core features run entirely on your iPhone using Apple Silicon:</p>
+            <ul>
+                <li>AI chat responses are generated on-device by a local language model (Qwen 3.5 4B) using llama.cpp</li>
+                <li>Document analysis (PDF, TXT, CSV) — text extraction and AI processing happen locally</li>
+                <li>Image analysis — OCR, object classification, and face detection use Apple's Vision framework on-device</li>
+                <li>Image editing — all filters and transformations use Core Image locally</li>
+                <li>Speech recognition — uses Apple's on-device SFSpeechRecognizer</li>
+                <li>Text embeddings — sentence similarity computed locally using all-MiniLM-L6-v2</li>
+                <li>Memory and search — SQLite database stored locally on your device</li>
+            </ul>
+            <p>No user content is ever sent to a remote server for processing.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-number">3</div>
+            <h3>Network Access</h3>
+            <div class="section-toggle">&#x25BC;</div>
+        </div>
+        <div class="section-content">
+            <p>SafeThink makes network requests only in two specific, user-initiated scenarios:</p>
+            <table>
+                <tr>
+                    <th>Service</th>
+                    <th>Purpose</th>
+                    <th>When</th>
+                </tr>
+                <tr>
+                    <td>HuggingFace</td>
+                    <td>Download AI model file (~2.6 GB)</td>
+                    <td><span class="badge badge-blue">User-initiated, one-time</span></td>
+                </tr>
+                <tr>
+                    <td>DuckDuckGo</td>
+                    <td>Web search for up-to-date information</td>
+                    <td><span class="badge badge-green">User-initiated, optional</span></td>
+                </tr>
+            </table>
+            <p>No user data, device identifiers, conversations, or personal information is included in these requests. Every outbound network request is logged and visible to you in the app's Privacy Dashboard.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-number">4</div>
+            <h3>Third-Party Services</h3>
+            <div class="section-toggle">&#x25BC;</div>
+        </div>
+        <div class="section-content">
+            <ul>
+                <li><strong>HuggingFace (huggingface.co)</strong> — Used exclusively for downloading the AI model file. No user data is transmitted. The download is a standard HTTPS file transfer.</li>
+                <li><strong>DuckDuckGo (duckduckgo.com)</strong> — Used only for web search queries when you explicitly request a web search. Only your search query is sent. DuckDuckGo does not track users. No cookies, identifiers, or personal data are included.</li>
+            </ul>
+            <p>SafeThink does not integrate any other third-party services, SDKs, or APIs.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-number">5</div>
+            <h3>Data Storage</h3>
+            <div class="section-toggle">&#x25BC;</div>
+        </div>
+        <div class="section-content">
+            <ul>
+                <li><strong>Conversations and messages</strong> — stored in a local SQLite database on your device</li>
+                <li><strong>AI memories</strong> — stored locally with optional embedding vectors for semantic retrieval</li>
+                <li><strong>Documents</strong> — processed locally; extracted text is stored in the local database</li>
+                <li><strong>Images</strong> — saved to the app's local sandboxed storage</li>
+                <li><strong>AI model files</strong> — stored locally and explicitly excluded from iCloud backup</li>
+                <li><strong>Settings and preferences</strong> — stored in UserDefaults on your device</li>
+            </ul>
+            <p>No data is synced to iCloud, shared with other apps, or uploaded to any server.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-number">6</div>
+            <h3>Security</h3>
+            <div class="section-toggle">&#x25BC;</div>
+        </div>
+        <div class="section-content">
+            <ul>
+                <li>Optional Face ID / Touch ID biometric lock to protect the app</li>
+                <li>All data is stored within the app's iOS sandbox, protected by the operating system</li>
+                <li>No data is transmitted over the network except as described in Section 3</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-number">7</div>
+            <h3>AI-Generated Content</h3>
+            <div class="section-toggle">&#x25BC;</div>
+        </div>
+        <div class="section-content">
+            <p>Responses are generated by an on-device AI language model. AI-generated content may be inaccurate, incomplete, or misleading. It should not be relied upon for medical, legal, financial, or safety-critical decisions. Always verify important information independently.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-number">8</div>
+            <h3>Children's Privacy</h3>
+            <div class="section-toggle">&#x25BC;</div>
+        </div>
+        <div class="section-content">
+            <p>SafeThink does not collect any personal information from anyone, including children under the age of 13. Since no data is collected or transmitted, there is no risk of children's data being shared or misused.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-number">9</div>
+            <h3>Data Deletion</h3>
+            <div class="section-toggle">&#x25BC;</div>
+        </div>
+        <div class="section-content">
+            <p>You have full control over your data at all times:</p>
+            <ul>
+                <li><strong>Delete individual conversations</strong> — swipe to delete from the conversation list</li>
+                <li><strong>Clear all chat history</strong> — Settings &gt; Clear Chat History</li>
+                <li><strong>Clear all data</strong> — Settings &gt; Clear All Data (removes conversations, memories, documents, and all stored data)</li>
+                <li><strong>Delete the app</strong> — uninstalling the app removes all data from your device, including the AI model and database</li>
+            </ul>
+            <p>Since no data is ever sent to a server, there is nothing to delete remotely.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-number">10</div>
+            <h3>Changes to This Policy</h3>
+            <div class="section-toggle">&#x25BC;</div>
+        </div>
+        <div class="section-content">
+            <p>If we update this privacy policy, the revised version will be posted on this page with an updated "Last updated" date. Since SafeThink does not collect email addresses or contact information, we encourage you to review this page periodically.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-number">11</div>
+            <h3>Contact</h3>
+            <div class="section-toggle">&#x25BC;</div>
+        </div>
+        <div class="section-content">
+            <p>If you have any questions or concerns about this privacy policy, please contact:</p>
+            <p><strong>Faizan Shaikh</strong><br>Email: <a href="mailto:mfaizan.shaikh@gmail.com" style="color: #3b82f6;">mfaizan.shaikh@gmail.com</a><br>GitHub: <a href="https://github.com/mfaizanshaikh/SafeThink" style="color: #3b82f6;">github.com/mfaizanshaikh/SafeThink</a></p>
+        </div>
+    </section>
+
+</div>
+
+<div class="footer">
+    <p>&copy; 2026 SafeThink. All rights reserved.</p>
+    <p style="margin-top: 8px;"><a href="https://github.com/mfaizanshaikh/SafeThink">GitHub</a></p>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#x25B2;</button>
+
+<script>
+function toggleSection(header) {
+    var content = header.nextElementSibling;
+    var toggle = header.querySelector('.section-toggle');
+    content.classList.toggle('open');
+    toggle.classList.toggle('open');
+}
+
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 400) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>
